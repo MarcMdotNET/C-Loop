@@ -78,3 +78,12 @@ code[class*="language-"],
     bottom: 0;
     width: 100%;
 }
+
+.oddNumber {
+    font-weight: normal;
+}
+
+.evenNumber {
+    font-weight: bold;
+    color: var(--secondary-color);
+}

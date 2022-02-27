@@ -23,7 +23,7 @@
     <!-- ==== Nav Section ==== -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="img/marcm-pro-nav-light-logo.svg" class="d-inline-block align-text-top" width="32" height="32"> C-Loop</a>
+            <a class="navbar-brand" href="#"><img src="img/c-loop-nav-light-logo.svg" class="d-inline-block align-text-top" width="32" height="32"> C-Loop</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -57,10 +57,81 @@
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            // Call helloWorld
-                            function helloWorld() {
-                                alert("Hello World");
-                            }                            
+                            //get the values from the page
+                            //start or controller function
+                            function getValues() {
+                            
+                                //get values from the page
+                                let _startValue = document.getElementById("startValue").value;
+                                let _endValue = document.getElementById("endValue").value;
+                            
+                                //we need to validate our input
+                                //parse into Integers
+                                _startValue = parseInt(_startValue);
+                                _endValue = parseInt(_endValue);
+                                
+                                if(Number.isInteger(_startValue) && Number.isInteger(_endValue)) {
+                            
+                                    //we call generateNumbers
+                                    let _numbersArray = generateNumbers(_startValue, _endValue);
+                            
+                                    //we call displayNumbers
+                                    displayNumbers(_numbersArray);
+                            
+                                } else {
+                            
+                                    alert("You must enter integer numbers!");
+                            
+                                }
+                            
+                            }
+                            
+                            //generate numbers from the start value to the end value
+                            //logic function(s)
+                            function generateNumbers(startValue, endValue) {
+                            
+                                let _numbersArray = [];
+                            
+                                //we want to get all numbers from start to end
+                                for (let _index = startValue; _index <= endValue; _index++) {
+                            
+                                    //this will execute in a loop until index = eValue
+                                    _numbersArray.push(_index);
+                            
+                                }
+                            
+                                return _numbersArray;
+                            
+                            }
+                            
+                            //display the numbers and mark the even numbers bold
+                            //display or view function
+                            function displayNumbers(numbersArray) {
+                                
+                                let _appPageRows = "";
+                            
+                                for (let _index = 0; _index < numbersArray.length; _index++) {
+                            
+                                    let _cssClass = "oddNumber";
+                                    let _number = numbersArray[_index];
+                            
+                                    if (_number % 2 == 0) {
+                            
+                                        _cssClass = "evenNumber";
+                            
+                                    } else {
+                            
+                                        _cssClass = "oddNumber";
+                            
+                                    }
+                            
+                                    _appPageRows += `&#60;tr>&#60;td class="${_cssClass}">${_number}&#60;td/>&#60;tr/>`;
+                            
+                                }
+                            
+                                document.getElementById("results").innerHTML = _appPageRows;
+                            
+                            }                                                        
                         </code>
                     </pre>
                 </div>
