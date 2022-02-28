@@ -36,7 +36,7 @@ function generateNumbers(startValue, endValue) {
     //we want to get all numbers from start to end
     for (let _index = startValue; _index <= endValue; _index++) {
 
-        //this will execute in a loop until index = eValue
+        //this will execute in a loop until _index equals endValue
         _numbersArray.push(_index);
 
     }
